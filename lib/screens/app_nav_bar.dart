@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ufc_soccer/providers/user_data.dart';
 import 'package:ufc_soccer/screens/home_screen.dart';
+import 'package:ufc_soccer/screens/profile_screen.dart';
 import 'package:ufc_soccer/utils/image_urls.dart';
 
-class AppNavBar extends StatefulWidget {
+class AppNavBar extends ConsumerStatefulWidget {
   static const String screen = '/AppNavBar';
   const AppNavBar({super.key});
 
   @override
-  State<AppNavBar> createState() => _AppNavBarState();
+  ConsumerState<AppNavBar> createState() => _AppNavBarState();
 }
 
-class _AppNavBarState extends State<AppNavBar> {
-  List<Widget> screens = [NextGameScreen(), NextGameScreen(), NextGameScreen()];
+class _AppNavBarState extends ConsumerState<AppNavBar> {
+  List<Widget> screens = [ProfileScreen(), NextGameScreen(), NextGameScreen()];
   int currentIndex = 0;
+  // @override
+  // void initState() async {
+  //   super.initState();
+  //   await ref.read(userData).fetchUserData(context);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +34,8 @@ class _AppNavBarState extends State<AppNavBar> {
             currentIndex = index;
           });
         },
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
         items: [
           BottomNavigationBarItem(
               label: 'Game',
@@ -33,11 +43,10 @@ class _AppNavBarState extends State<AppNavBar> {
                 AppSvg.footballIcon,
                 height: 20,
               )),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               label: "Profile",
-              icon: SvgPicture.asset(
-                AppSvg.footballIcon,
-                height: 20,
+              icon: Icon(
+                Icons.person_rounded,
               )),
           BottomNavigationBarItem(
               label: "Videos",

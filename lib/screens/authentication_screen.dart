@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ufc_soccer/providers/admin_provider.dart';
+import 'package:ufc_soccer/utils/constants.dart';
+import 'package:ufc_soccer/widgets/sign_up_button.dart';
 import '../providers/auth_providers.dart';
 import '../utils/image_urls.dart';
 import '../widgets/auth_text_field.dart';
@@ -16,10 +16,11 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool isToogleScreen = true;
+  bool isToogleScreen = false;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
+  final accessCodeController = TextEditingController();
   String? displayName;
 
   @override
@@ -132,7 +133,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 49 + 10),
+                                const SizedBox(height: 10),
                                 SignUpButton(
                                     onPressed: () {
                                       isToogleScreen
@@ -140,6 +141,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                               .read(signUpProvider)
                                               .signUpValidation(
                                                 context: context,
+                                                correctCode:
+                                                    accessCodeController.text
+                                                        .trim(),
                                                 nameController: nameController,
                                                 email: emailController,
                                                 password: passwordController,
@@ -147,13 +151,11 @@ class _AuthScreenState extends State<AuthScreen> {
                                                     nameController.text,
                                               )
                                           : ref
-                                              .read(adminProvider)
-                                              .authenticateUser(
+                                              .read(signInProvider)
+                                              .signInValidation(
                                                   context: context,
-                                                  emailController:
-                                                      emailController,
-                                                  passwordController:
-                                                      passwordController);
+                                                  email: emailController,
+                                                  password: passwordController);
                                     },
                                     provider: ref.read(signUpProvider),
                                     nameController: nameController,
@@ -164,270 +166,14 @@ class _AuthScreenState extends State<AuthScreen> {
                               ],
                             ),
                           ),
-                          Container(
-                            // frame5082Mac (211:75)
-                            width: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  // group76YC (211:76)
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * 1, 0 * 1, 0 * 1, 16 * 1),
-                                  width: double.infinity,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        // line1EuJ (211:78)
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * 1, 2 * 1, 0 * 1, 0 * 1),
-                                        width: 62 * 1,
-                                        height: 1 * 1,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xff999999),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 16 * 1,
-                                      ),
-                                      Text(
-                                        // or8zg (211:77)
-                                        'OR',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 14 * 1,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5 * 1 / 1,
-                                          color: Color(0xff999999),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 16 * 1,
-                                      ),
-                                      Container(
-                                        // line2UYk (211:79)
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * 1, 2 * 1, 0 * 1, 0 * 1),
-                                        width: 62 * 1,
-                                        height: 1 * 1,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xff999999),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  // loginwithsocialmediaDFS (211:80)
-                                  'Login with social media',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 14 * 1,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.2125 * 1 / 1,
-                                    color: Color(0xff333333),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                         ],
                       ),
                     ),
-                    Container(
-                      // frame5083Z4Q (211:28)
-                      margin: EdgeInsets.fromLTRB(0 * 1, 0 * 1, 0 * 1, 56 * 1),
-                      width: double.infinity,
-                      height: 81 * 1,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            // frame5103VCx (211:30)
-                            width: 114 * 1,
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  // group48095878r3W (211:31)
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * 1, 0 * 1, 0 * 1, 6 * 1),
-                                  padding: EdgeInsets.fromLTRB(
-                                      40 * 1, 12 * 1, 40 * 1, 12 * 1),
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffffffff),
-                                    borderRadius: BorderRadius.circular(8 * 1),
-                                  ),
-                                  child: Center(
-                                    // group11AK6 (211:33)
-                                    child: SizedBox(
-                                      width: 34 * 1,
-                                      height: 34 * 1,
-                                      child: SvgPicture.asset(
-                                        AppSvg.googleIcon,
-                                        width: 34 * 1,
-                                        height: 34 * 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  // googleHuW (211:40)
-                                  'Google',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 14 * 1,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.2125 * 1 / 1,
-                                    color: Color(0xffb4bbc5),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20 * 1,
-                          ),
-                          Container(
-                            // frame51029Rv (211:42)
-                            width: 114 * 1,
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  // group480958766c4 (211:43)
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * 1, 0 * 1, 0 * 1, 6 * 1),
-                                  padding: EdgeInsets.fromLTRB(
-                                      40 * 1, 12 * 1, 40 * 1, 12 * 1),
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffffffff),
-                                    borderRadius: BorderRadius.circular(8 * 1),
-                                  ),
-                                  child: Center(
-                                    // group10RPS (211:45)
-                                    child: SizedBox(
-                                      width: 34 * 1,
-                                      height: 34 * 1,
-                                      child: SvgPicture.asset(
-                                        AppSvg.facebookIcon,
-                                        width: 34 * 1,
-                                        height: 34 * 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  // facebookkAp (211:48)
-                                  'Facebook',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 14 * 1,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.2125 * 1 / 1,
-                                    color: Color(0xffb4bbc5),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20 * 1,
-                          ),
-                          Container(
-                            // frame5101foa (211:50)
-                            width: 114 * 1,
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  // group48095877cip (211:51)
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * 1, 0 * 1, 0 * 1, 6 * 1),
-                                  padding: EdgeInsets.fromLTRB(44.25 * 1,
-                                      14.83 * 1, 45.27 * 1, 14.11 * 1),
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffffffff),
-                                    borderRadius: BorderRadius.circular(8 * 1),
-                                  ),
-                                  child: Center(
-                                    // appleiconL92 (211:53)
-                                    child: SizedBox(
-                                      width: 24.48 * 1,
-                                      height: 29.06 * 1,
-                                      child: SvgPicture.asset(
-                                        AppSvg.appleIcon,
-                                        width: 24.48 * 1,
-                                        height: 29.06 * 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  // appleTjS (211:55)
-                                  'Apple',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 14 * 1,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.2125 * 1 / 1,
-                                    color: Color(0xffb4bbc5),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isToogleScreen = !isToogleScreen;
-                          print('THIS IS TOOGLE STATUS $isToogleScreen');
-                        });
-                      },
-                      child: RichText(
-                        // newuserssignupoYQ (211:27)
-                        text: TextSpan(
-                          style: GoogleFonts.poppins(
-                            fontSize: 14 * 1,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5 * 1 / 1,
-                            color: Color(0xff999999),
-                          ),
-                          children: [
-                            TextSpan(
-                              text: isToogleScreen
-                                  ? 'Already have an account? '
-                                  : 'New users? ',
-                              style: GoogleFonts.inter(
-                                fontSize: 14 * 1,
-                                fontWeight: FontWeight.w400,
-                                height: 1.2125 * 1 / 1,
-                                color: Color(0xff999999),
-                              ),
-                            ),
-                            TextSpan(
-                              text: isToogleScreen ? 'Log in' : 'Sign Up',
-                              style: GoogleFonts.inter(
-                                fontSize: 14 * 1,
-                                fontWeight: FontWeight.w600,
-                                height: 1.2125 * 1 / 1,
-                                color: Color(0xff2a81bf),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    ScreenToogleButton(
+                      onTap: () => setState(() {
+                        isToogleScreen = !isToogleScreen;
+                      }),
+                      isToogleScreen: isToogleScreen,
                     ),
                   ],
                 ),
@@ -439,7 +185,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Container textFieldsList() {
     return Container(
       // frame5091rpt (211:59)
-      margin: EdgeInsets.fromLTRB(0 * 1, 0 * 1, 0 * 1, 16 * 1),
+      margin: paddBottom16,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -450,7 +196,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   iconPath: AppSvg.personIcon,
                   controller: nameController,
                 )
-              : SizedBox.shrink(),
+              : sizeBoxShrink,
           AuthTextField(
             hintText: 'Email*',
             iconPath: AppSvg.mailIcon,
@@ -461,48 +207,73 @@ class _AuthScreenState extends State<AuthScreen> {
             controller: passwordController,
             iconPath: AppSvg.lockIcon,
           ),
+          isToogleScreen
+              ? AuthTextField(
+                  hintText: 'Access code',
+                  iconPath: '',
+                  controller: accessCodeController,
+                )
+              : sizeBoxShrink,
         ],
       ),
     );
   }
 }
 
-class SignUpButton extends StatelessWidget {
-  const SignUpButton(
-      {super.key,
-      required this.provider,
-      required this.nameController,
-      required this.emailController,
-      required this.passwordController,
-      required this.size,
-      required this.isToogleScreen,
-      required this.onPressed});
-  final VoidCallback onPressed;
+class ScreenToogleButton extends StatelessWidget {
+  const ScreenToogleButton(
+      {super.key, required this.isToogleScreen, required this.onTap});
 
-  final SignUpAuthProvider provider;
-  final TextEditingController nameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final Size size;
   final bool isToogleScreen;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: onPressed,
-        style: TextButton.styleFrom(
-            fixedSize: Size(size.width * 0.9, 20 * 2.7),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0)),
-            backgroundColor: Color(0xFF12BCE3)),
-        child: Text(
-          isToogleScreen ? 'Sign Up' : 'Login',
-          style: GoogleFonts.inter(
-            fontSize: 16 * 1,
-            fontWeight: FontWeight.w500,
-            height: 1.2125 * 1 / 1,
-            color: Color(0xffffffff),
+    return GestureDetector(
+      onTap: onTap,
+      child: RichText(
+        // newuserssignupoYQ (211:27)
+        text: TextSpan(
+          style: GoogleFonts.poppins(
+            fontSize: 14 * 1,
+            fontWeight: FontWeight.w400,
+            height: 1.5 * 1 / 1,
+            color: kGrayColor,
           ),
-        ));
+          children: [
+            TextSpan(
+              text:
+                  isToogleScreen ? 'Already have an account? ' : 'New users? ',
+              style: GoogleFonts.inter(
+                fontSize: 14 * 1,
+                fontWeight: FontWeight.w400,
+                height: 1.2125 * 1 / 1,
+                color: kGrayColor,
+              ),
+            ),
+            TextSpan(
+              text: isToogleScreen ? 'Log in' : 'Sign Up',
+              style: GoogleFonts.inter(
+                fontSize: 14 * 1,
+                fontWeight: FontWeight.w600,
+                height: 1.2125 * 1 / 1,
+                color: kPrimaryColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
+
+const paddBottom16 = EdgeInsets.only(bottom: 16);
+const sizeBox16 = SizedBox(
+  width: 16 * 1,
+);
+
+const sizeBoxShrink = SizedBox.shrink();
+const padd44_14 = EdgeInsets.symmetric(horizontal: 14.83, vertical: 44.11);
+const sizeBox20 = SizedBox(
+  width: 20 * 1,
+);
