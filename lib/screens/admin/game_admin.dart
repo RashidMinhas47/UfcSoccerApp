@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ufc_soccer/screens/profile_screens/edit_profile_screen.dart';
-import 'package:ufc_soccer/screens/profile_screens/game_videos_screen.dart';
 import 'package:ufc_soccer/utils/constants.dart';
 import 'package:ufc_soccer/utils/firebase_const.dart';
-
-import 'package:ufc_soccer/widgets/list_of_videos.dart';
-import 'package:ufc_soccer/widgets/player_stats.dart';
-import 'package:ufc_soccer/widgets/sign_up_button.dart';
-import 'package:ufc_soccer/widgets/user_card.dart';
-import 'package:ufc_soccer/widgets/user_profile_form.dart';
 
 class GameAdmin extends ConsumerWidget {
   static const String screen = '/GameAdmin';
