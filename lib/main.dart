@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ufc_soccer/screens/admin/game_admin.dart';
+import 'package:ufc_soccer/screens/admin/setup_game.dart';
 import 'package:ufc_soccer/screens/app_nav_bar.dart';
 import 'package:ufc_soccer/screens/auth_check_screen.dart';
 import 'package:ufc_soccer/screens/home_screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: GameAdmin.screen,
+      initialRoute: GameSetupScreen.screen,
       routes: {
         AuthCheckScreen.screen: (context) => const AuthCheckScreen(),
         AuthScreen.screen: (context) => const AuthScreen(),
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
         ProfileScreen.screen: (context) => const ProfileScreen(),
         GameVideosScreen.screen: (context) => const GameVideosScreen(),
         EditProfileScreen.screen: (context) => const EditProfileScreen(),
-        GameAdmin.screen: (context) => const GameAdmin()
+        GameAdmin.screen: (context) => const GameAdmin(),
+        GameSetupScreen.screen: (context) => GameSetupScreen()
       },
     );
   }

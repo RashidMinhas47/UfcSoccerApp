@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ufc_soccer/providers/admin_provider.dart';
 import 'package:ufc_soccer/screens/profile_screens/edit_profile_screen.dart';
 import 'package:ufc_soccer/utils/constants.dart';
 import 'package:ufc_soccer/utils/firebase_const.dart';
@@ -25,17 +26,22 @@ class GameAdmin extends ConsumerWidget {
           centerTitle: true,
         ),
         body: Center(
-          child: Column(
-            children: [
-              for (int i = 0; i < 4; i)
-                CustomLargeButton(
-                  backgroundColor: kWhiteColor.withOpacity(0.0),
-                  onPressed: () {},
-                  size: size,
-                  label: adminButtons[i][TITLE],
-                  fontColor: kBlackColor,
-                )
-            ],
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (int index = 0; index < adminButtons.length; index++)
+                  CustomLargeButton(
+                    paddH: 10,
+                    paddV: 20,
+                    backgroundColor: kWhiteColor.withOpacity(0.0),
+                    onPressed: () {},
+                    size: size,
+                    label: adminButtons[index][TITLE],
+                    fontColor: kBlackColor,
+                  )
+              ],
+            ),
           ),
         ));
   }

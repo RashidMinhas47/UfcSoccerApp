@@ -53,6 +53,8 @@ class CustomLargeButton extends StatelessWidget {
       required this.size,
       required this.fontColor,
       required this.label,
+      this.paddH = 0,
+      this.paddV = 0,
       required this.backgroundColor});
 
   final Size size;
@@ -60,26 +62,31 @@ class CustomLargeButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
   final Color backgroundColor;
+  final double paddH;
+  final double paddV;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: onPressed,
-        style: TextButton.styleFrom(
-          fixedSize: Size(size.width * 0.9, 20 * 2.7),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-              side: BorderSide(color: Colors.grey)),
-          backgroundColor: Color(0xFF12BCE3).withOpacity(0),
-        ),
-        child: Text(
-          'Update',
-          style: GoogleFonts.inter(
-            fontSize: 16 * 1,
-            fontWeight: FontWeight.w500,
-            height: 1.2125 * 1 / 1,
-            color: fontColor,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: paddH, vertical: paddV),
+      child: TextButton(
+          onPressed: onPressed,
+          style: TextButton.styleFrom(
+            fixedSize: Size(size.width * 0.9, 20 * 2.7),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                side: const BorderSide(color: Colors.grey)),
+            backgroundColor: Color(0xFF12BCE3).withOpacity(0),
           ),
-        ));
+          child: Text(
+            label,
+            style: GoogleFonts.inter(
+              fontSize: 16 * 1,
+              fontWeight: FontWeight.w500,
+              height: 1.2125 * 1 / 1,
+              color: fontColor,
+            ),
+          )),
+    );
   }
 }
