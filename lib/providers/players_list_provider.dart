@@ -10,20 +10,20 @@ class PlayersListProvider extends ChangeNotifier {
 
   void fetchPlayers() {
     // Simulate fetching players' lists from an API or database
-    teamAPlayers.insertAll(1, [
+    teamAPlayers.addAll([
       'Player 1',
       'Player 2',
       'Player 3',
       'Player 4',
-      'Player 4+1',
-      'Player 4+2',
+      'Player 5',
+      'Player 6',
       'Player 7',
       'Player 8',
       'Player 9',
-      'Player 0',
+      'Player 10',
       'Player 11'
     ]);
-    teamBPlayers.insertAll(1, [
+    teamBPlayers.addAll([
       'Player A',
       'Player B',
       'Player C',

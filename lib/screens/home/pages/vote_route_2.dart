@@ -33,22 +33,24 @@ class VoteForNextGame2 extends ConsumerWidget {
         //     ],
         //   ),
         //   body:
-        Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-        child: Column(
-          children: [
-            NextGameDetailTile(),
-            const PlayersListTable(),
-            // const PlayersListTable(),
-            Text(
-              'A vote in favor of keeping teams has been selected.', //Todo: here the total time of the Remix Team Will be available for voters
-              style: GoogleFonts.poppins(fontSize: 20),
-            ),
-          ],
+        SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+          child: Column(
+            children: [
+              NextGameDetailTile(),
+              const PlayersListTable(),
+              // const PlayersListTable(),
+              Text(
+                'A vote in favor of keeping teams has been selected.', //Todo: here the total time of the Remix Team Will be available for voters
+                style: GoogleFonts.poppins(fontSize: 20),
+              ),
+            ],
+          ),
         ),
+        // ),
       ),
-      // ),
     );
   }
 }

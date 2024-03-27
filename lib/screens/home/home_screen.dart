@@ -4,6 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ufc_soccer/providers/auth_providers.dart';
+import 'package:ufc_soccer/screens/home/pages/join_&_leave_game.dart';
+import 'package:ufc_soccer/screens/home/pages/vote_for_team.dart';
+import 'package:ufc_soccer/screens/home/pages/vote_route_2.dart';
+import 'package:ufc_soccer/screens/home/pages/vote_route_3.dart';
 import 'package:ufc_soccer/utils/constants.dart';
 import 'package:ufc_soccer/widgets/custom_large_btn.dart';
 
@@ -13,6 +17,13 @@ class NextGameScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final List<Widget> joinLeavePages = [
+      JoinGameScreen(),
+      LeaveGameScreen(),
+      VoteForNextGame(),
+      VoteForNextGame2(),
+      VoteForNextGame3()
+    ];
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -46,40 +57,8 @@ class NextGameScreen extends ConsumerWidget {
               Expanded(
                 child: PageView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 2,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 1,
-                            child: Container(
-                              decoration:
-                                  const BoxDecoration(color: kGrayColor),
-                              child: const Icon(
-                                Icons.image,
-                                size: 140,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "Sign Up For a Game",
-                            style: GoogleFonts.poppins(
-                                fontSize: 18, fontWeight: FontWeight.w700),
-                          ),
-                          const Text(
-                              "{Next Game Date Time}"), //todo: here the data will come
-                          const Text(
-                              "{Spots Available}"), //todo: herer the data will come
-                          LargeFlatButton(
-                            onPressed: () {},
-                            size: const Size(200, 100),
-                            fontColor: kPrimaryColor,
-                            label: 'Join Game',
-                            backgroundColor: Colors.white.withOpacity(0),
-                          ),
-                        ],
-                      );
-                    }),
+                    itemCount: joinLeavePages.length,
+                    itemBuilder: (context, index) => joinLeavePages[index]),
               )
             ],
           ),

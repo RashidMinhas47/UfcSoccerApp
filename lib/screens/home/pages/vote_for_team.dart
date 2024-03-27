@@ -13,31 +13,34 @@ class VoteForNextGame extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Next Game",
-          style: GoogleFonts.inter(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
-                ref.read(signInProvider).signOutUser(context);
-              },
-              icon: const Icon(Icons.settings))
-        ],
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+    return
+        // Scaffold(
+        //   appBar: AppBar(
+        //     title: Text(
+        //       "Next Game",
+        //       style: GoogleFonts.inter(
+        //         fontWeight: FontWeight.bold,
+        //         fontSize: 30,
+        //       ),
+        //     ),
+        //     centerTitle: true,
+        //     actions: [
+        //       IconButton(
+        //           onPressed: () {
+        //             ref.read(signInProvider).signOutUser(context);
+        //           },
+        //           icon: const Icon(Icons.settings))
+        //     ],
+        //   ),
+        //   body:
+        Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               NextGameDetailTile(),
-              PlayersListTable(),
+              const PlayersListTable(),
               // const PlayersListTable(),
               Text(
                 'Remix Team {Vote countdown time}', //Todo: here the total time of the Remix Team Will be available for voters
@@ -52,10 +55,10 @@ class VoteForNextGame extends ConsumerWidget {
                       fontColor: kPrimaryColor,
                       label: "Yes",
                       backgroundColor: Colors.transparent),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   LargeFlatButton(
                       onPressed: () {},
-                      size: Size(120, 60),
+                      size: const Size(120, 60),
                       fontColor: kPrimaryColor,
                       label: "No",
                       backgroundColor: Colors.transparent),
@@ -64,6 +67,7 @@ class VoteForNextGame extends ConsumerWidget {
             ],
           ),
         ),
+        // ),
       ),
     );
   }
