@@ -2,13 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ufc_soccer/providers/admin_provider.dart';
+import 'package:ufc_soccer/screens/admin/game_info.dart';
+import 'package:ufc_soccer/screens/admin/setup_game.dart';
+import 'package:ufc_soccer/screens/admin/update_player_stats.dart';
 import 'package:ufc_soccer/screens/profile_screens/edit_profile_screen.dart';
 import 'package:ufc_soccer/utils/constants.dart';
 import 'package:ufc_soccer/utils/firebase_const.dart';
+import 'package:ufc_soccer/widgets/custom_large_btn.dart';
 
 class GameAdmin extends ConsumerWidget {
   static const String screen = '/GameAdmin';
   const GameAdmin({super.key});
+  List<Future<Object?>> onPresseds(BuildContext context) {
+    return [
+      Navigator.pushNamed(context, GameSetupScreen.screen),
+      Navigator.pushNamed(context, GameInfoScreen.screen),
+      Navigator.pushNamed(context, UpdatePlayerStats.screen),
+      Navigator.pushNamed(context, GameSetupScreen.screen),
+    ];
+  }
 
   @override
   Widget build(BuildContext context, ref) {
@@ -31,11 +43,11 @@ class GameAdmin extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 for (int index = 0; index < adminButtons.length; index++)
-                  CustomLargeButton(
+                  LargeFlatButton(
                     paddH: 10,
                     paddV: 20,
                     backgroundColor: kWhiteColor.withOpacity(0.0),
-                    onPressed: () {},
+                    onPressed: () => onPresseds(context).elementAt(index),
                     size: size,
                     label: adminButtons[index][TITLE],
                     fontColor: kBlackColor,
@@ -50,14 +62,22 @@ class GameAdmin extends ConsumerWidget {
 List<Map<String, dynamic>> adminButtons = [
   {
     TITLE: 'Setup Match',
+    ONPRESSED: (BuildContext context) =>
+        Navigator.pushNamed(context, GameSetupScreen.screen),
   },
   {
     TITLE: 'Game Info',
+    ONPRESSED: (BuildContext context) =>
+        Navigator.pushNamed(context, GameInfoScreen.screen),
   },
   {
     TITLE: 'Update Player Stats',
+    ONPRESSED: (BuildContext context) =>
+        Navigator.pushNamed(context, UpdatePlayerStats.screen),
   },
   {
     TITLE: 'Manage App Settings',
+    ONPRESSED: (BuildContext context) =>
+        Navigator.pushNamed(context, UpdatePlayerStats.screen),
   }
 ];

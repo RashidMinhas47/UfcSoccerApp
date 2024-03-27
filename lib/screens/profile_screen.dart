@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ufc_soccer/providers/user_data.dart';
+import 'package:ufc_soccer/screens/admin/game_admin.dart';
 import 'package:ufc_soccer/screens/profile_screens/game_videos_screen.dart';
 import 'package:ufc_soccer/utils/constants.dart';
 import 'package:ufc_soccer/utils/image_urls.dart';
@@ -31,6 +32,13 @@ class ProfileScreen extends ConsumerWidget {
         ),
         body: Column(
           children: [
+            ListTile(
+              leading: Icon(Icons.admin_panel_settings_rounded),
+              title: Text("Admin Panel"),
+              onTap: () {
+                Navigator.pushNamed(context, GameAdmin.screen);
+              },
+            ),
             const UserProfileCard(),
             const PlayerStatsCard(),
             Expanded(

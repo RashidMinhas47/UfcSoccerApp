@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ufc_soccer/providers/user_data.dart';
-import 'package:ufc_soccer/screens/home_screen.dart';
+import 'package:ufc_soccer/screens/home/home_screen.dart';
 import 'package:ufc_soccer/screens/profile_screen.dart';
+import 'package:ufc_soccer/screens/profile_screens/edit_profile_screen.dart';
+import 'package:ufc_soccer/screens/profile_screens/game_videos_screen.dart';
 import 'package:ufc_soccer/utils/image_urls.dart';
+import 'package:ufc_soccer/widgets/game_video_player.dart';
 
 class AppNavBar extends ConsumerStatefulWidget {
   static const String screen = '/AppNavBar';
@@ -15,7 +18,11 @@ class AppNavBar extends ConsumerStatefulWidget {
 }
 
 class _AppNavBarState extends ConsumerState<AppNavBar> {
-  List<Widget> screens = [ProfileScreen(), NextGameScreen(), NextGameScreen()];
+  List<Widget> screens = [
+    NextGameScreen(),
+    ProfileScreen(),
+    GameVideosScreen()
+  ];
   int currentIndex = 0;
   // @override
   // void initState() async {

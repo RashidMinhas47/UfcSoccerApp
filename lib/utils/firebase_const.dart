@@ -9,3 +9,4 @@ const String EMAIL = 'EMAIL';
 const String APPROVED = 'APPROVED';
 const String USERS = 'USERS';
 const String TITLE = 'TITLE';
+const String ONPRESSED = "ONPRESSED";

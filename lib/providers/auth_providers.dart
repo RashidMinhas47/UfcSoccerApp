@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ufc_soccer/screens/app_nav_bar.dart';
 import 'package:ufc_soccer/screens/auth_check_screen.dart';
-import 'package:ufc_soccer/screens/home_screen.dart';
+import 'package:ufc_soccer/screens/home/home_screen.dart';
 import 'package:ufc_soccer/utils/firebase_const.dart';
 import '../utils/const_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

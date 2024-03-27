@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ufc_soccer/providers/user_data.dart';
 import 'package:ufc_soccer/screens/app_nav_bar.dart';
 import 'package:ufc_soccer/screens/authentication_screen.dart';
-import 'package:ufc_soccer/screens/home_screen.dart';
+import 'package:ufc_soccer/screens/home/home_screen.dart';
 
 class AuthCheckScreen extends ConsumerStatefulWidget {
   static const String screen = '/AuthCheckScreen';

@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ufc_soccer/screens/admin/game_admin.dart';
+import 'package:ufc_soccer/screens/admin/game_info.dart';
 import 'package:ufc_soccer/screens/admin/setup_game.dart';
+import 'package:ufc_soccer/screens/admin/manage_app.dart';
+import 'package:ufc_soccer/screens/admin/update_player_stats.dart';
 import 'package:ufc_soccer/screens/app_nav_bar.dart';
 import 'package:ufc_soccer/screens/auth_check_screen.dart';
-import 'package:ufc_soccer/screens/home_screen.dart';
+import 'package:ufc_soccer/screens/home/pages/vote_for_team.dart';
+import 'package:ufc_soccer/screens/home/home_screen.dart';
 import 'package:ufc_soccer/screens/profile_screen.dart';
 import 'package:ufc_soccer/screens/profile_screens/edit_profile_screen.dart';
 import 'package:ufc_soccer/screens/profile_screens/game_videos_screen.dart';
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: GameSetupScreen.screen,
+      initialRoute: AuthCheckScreen.screen,
       routes: {
         AuthCheckScreen.screen: (context) => const AuthCheckScreen(),
         AuthScreen.screen: (context) => const AuthScreen(),
@@ -37,7 +41,11 @@ class MyApp extends StatelessWidget {
         GameVideosScreen.screen: (context) => const GameVideosScreen(),
         EditProfileScreen.screen: (context) => const EditProfileScreen(),
         GameAdmin.screen: (context) => const GameAdmin(),
-        GameSetupScreen.screen: (context) => GameSetupScreen()
+        GameSetupScreen.screen: (context) => const GameSetupScreen(),
+        GameInfoScreen.screen: (context) => const GameInfoScreen(),
+        UpdatePlayerStats.screen: (context) => const UpdatePlayerStats(),
+        ManageAppSettings.screen: (context) => const ManageAppSettings(),
+        VoteForNextGame.screen: (context) => const VoteForNextGame(),
       },
     );
   }
