@@ -22,8 +22,8 @@ class GameInfoScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final urlCtr = ref.read(urlCtrProvider);
-    final gameInfoPro = ref.read(gameInfoProvider.notifier);
+    final urlCtr = ref.watch(urlCtrProvider);
+    final gameInfoPro = ref.watch(gameInfoProvider);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -44,8 +44,8 @@ class GameInfoScreen extends ConsumerWidget {
             ),
             ScoreInputWidget(
               label: 'Blue Team Score',
-              incrementTap: gameInfoPro.blueTeamScoreAdd(),
-              decrementTap: gameInfoPro.blueTeamScoreRemove(),
+              incrementTap: () => gameInfoPro.blueTeamScoreAdd(),
+              decrementTap: () => gameInfoPro.blueTeamScoreRemove(),
               ctrText: gameInfoPro.blueTeamScore.toString(),
             ),
             ScoreInputWidget(

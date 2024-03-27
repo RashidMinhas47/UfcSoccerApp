@@ -33,19 +33,21 @@ class ProfileScreen extends ConsumerWidget {
         body: Column(
           children: [
             ListTile(
-              leading: Icon(Icons.admin_panel_settings_rounded),
-              title: Text("Admin Panel"),
+              leading: const Icon(
+                Icons.admin_panel_settings_rounded,
+                size: 40,
+              ),
+              title: Text(
+                "Admin Panel",
+                style: GoogleFonts.poppins(fontSize: 20),
+              ),
               onTap: () {
                 Navigator.pushNamed(context, GameAdmin.screen);
               },
             ),
             const UserProfileCard(),
             const PlayerStatsCard(),
-            Expanded(
-                child: GestureDetector(
-                    onTap: () =>
-                        Navigator.pushNamed(context, GameVideosScreen.screen),
-                    child: const VideoListTiles()))
+            const Expanded(child: VideoListTiles())
           ],
         ));
   }
