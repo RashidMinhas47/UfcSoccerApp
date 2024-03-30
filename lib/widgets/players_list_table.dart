@@ -14,52 +14,56 @@ class PlayersListTable extends ConsumerWidget {
     playersPro.fetchPlayers();
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      height: 499,
+      height: 280,
       child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
         itemCount: playersPro.teamAPlayers.length, // Example number of rows
         itemBuilder: (context, index) => Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Divider(
-                height: 1,
-                color: Colors.grey.withOpacity(0.4)), // Divider above row
-            ListTile(
-              contentPadding: const EdgeInsets.symmetric(vertical: 0),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(2.0),
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    decoration: const BoxDecoration(color: kPrimaryColor),
-                    child: const Icon(
-                      Icons.check,
-                      size: 8,
-                      color: kWhiteColor,
-                    ),
+            // Divider above row
+            // ListTile(
+            // contentPadding: const EdgeInsets.symmetric(vertical: 0),
+            // title:
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(1.0),
+                  margin: const EdgeInsets.symmetric(vertical: 2.0),
+                  decoration: const BoxDecoration(color: kPrimaryColor),
+                  child: const Icon(
+                    Icons.check,
+                    size: 8,
+                    color: kWhiteColor,
                   ),
-                  const SizedBox(width: 8),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      playersPro.teamAPlayers[index], // Example team name
-                      style: GoogleFonts.poppins(fontSize: 14),
-                    ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    playersPro.teamAPlayers[index], // Example team name
+                    style: GoogleFonts.poppins(fontSize: 13),
                   ),
-                  const SizedBox(width: 8),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      playersPro.teamBPlayers[index], // Example team name
-                      style: GoogleFonts.poppins(fontSize: 14),
-                    ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    playersPro.teamBPlayers[index], // Example team name
+                    style: GoogleFonts.poppins(fontSize: 13),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-
-            Divider(height: 1, color: Colors.grey.withOpacity(0.4)),
+            Divider(
+                indent: 70,
+                endIndent: 70,
+                height: 4,
+                color: Colors.grey.withOpacity(0.2)),
+            // ),
           ],
         ),
       ),

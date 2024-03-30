@@ -19,6 +19,9 @@ class ProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    // ref.watch(userData).fetchUserData(context);
+    final userD = ref.watch(userDataProvider);
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -45,7 +48,6 @@ class ProfileScreen extends ConsumerWidget {
                 Navigator.pushNamed(context, GameAdmin.screen);
               },
             ),
-            const UserProfileCard(),
             const PlayerStatsCard(),
             const Expanded(child: VideoListTiles())
           ],

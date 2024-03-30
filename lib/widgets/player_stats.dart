@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ufc_soccer/providers/user_data.dart';
 import 'package:ufc_soccer/utils/image_urls.dart';
 
-class PlayerStatsCard extends ConsumerWidget {
+class PlayerStatsCard extends StatelessWidget {
   const PlayerStatsCard({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(

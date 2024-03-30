@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ufc_soccer/providers/game_setup_providers.dart';
+import 'package:ufc_soccer/providers/game_info_providers.dart';
+import 'package:ufc_soccer/providers/setup_game_provider.dart';
 import 'package:ufc_soccer/providers/text_controllers.dart';
 import 'package:ufc_soccer/screens/admin/setup_game.dart';
 import 'package:ufc_soccer/screens/admin/update_player_stats.dart';
@@ -25,6 +26,7 @@ class GameInfoScreen extends ConsumerWidget {
     final urlCtr = ref.watch(urlCtrProvider);
     final gameInfoPro = ref.watch(gameInfoProvider);
     final size = MediaQuery.of(context).size;
+    final setGamePro = ref.watch(setupGameProvider);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBars.appBar("Game Admin", "Game Info"),
@@ -39,8 +41,12 @@ class GameInfoScreen extends ConsumerWidget {
             const GameVideoPlayer(),
             TextFeildWithBorder(
                 controller: urlCtr, hintText: 'Enter YouTube URL'),
-            const SwitchCustomButton(
+            SwitchCustomButton(
               label: "Release Video Immediately",
+              onChanged: (value) {
+                setGamePro.setVoteCondition(value);
+              },
+              value: setGamePro.remixVote,
             ),
             ScoreInputWidget(
               label: 'Blue Team Score',

@@ -9,6 +9,20 @@ final adminProvider = ChangeNotifierProvider((ref) => AdminProvider());
 class AdminProvider with ChangeNotifier {
   bool _loading = false;
   String? displayName;
+
+  List<String> _adminUIDs = [];
+  List<String> _adminNames = ["Ahsan I"];
+  List<String> _locations = [
+    "UFC Ground new york",
+    'Soccer Trip silicon vally'
+  ];
+  //todo: i will add thosse managers and other stuff
+  List<String> _managers = ["Champ", 'Ali'];
+
+  List<String> get locations => _locations;
+  List<String> get adminNames => _adminNames;
+  List<String> get adminUIDs => _adminNames;
+  List<String> get managers => _managers;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   bool get loading => _loading;
   void authenticateUser({

@@ -28,14 +28,16 @@ class _AuthCheckScreenState extends ConsumerState<AuthCheckScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: ref.read(userData).checkAuthenticationStatus(context),
+        future: ref.watch(userDataProvider).checkAuthenticationStatus(context),
         builder: (context, snapshot) => FutureBuilder(
-          future: ref.read(userData).fetchUserData(context),
+          future: ref.watch(userDataProvider).fetchUserData(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return const AppNavBar();
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
             } else {
-              return const AuthScreen();
+              return AuthScreen();
             }
           },
         ),

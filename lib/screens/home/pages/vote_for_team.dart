@@ -36,36 +36,35 @@ class VoteForNextGame extends ConsumerWidget {
         Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              NextGameDetailTile(),
-              const PlayersListTable(),
-              // const PlayersListTable(),
-              Text(
-                'Remix Team {Vote countdown time}', //Todo: here the total time of the Remix Team Will be available for voters
-                style: GoogleFonts.poppins(fontSize: 20),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  LargeFlatButton(
-                      onPressed: () {},
-                      size: Size(120, 60),
-                      fontColor: kPrimaryColor,
-                      label: "Yes",
-                      backgroundColor: Colors.transparent),
-                  const SizedBox(width: 20),
-                  LargeFlatButton(
-                      onPressed: () {},
-                      size: const Size(120, 60),
-                      fontColor: kPrimaryColor,
-                      label: "No",
-                      backgroundColor: Colors.transparent),
-                ],
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            NextGameDetailTile(),
+            const PlayersListTable(),
+            // const PlayersListTable(),
+            Text(
+              'Remix Team {Vote countdown time}', //Todo: here the total time of the Remix Team Will be available for voters
+              style: GoogleFonts.poppins(fontSize: 20),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LargeFlatButton(
+                    onPressed: () {},
+                    size: const Size(120, 60),
+                    fontColor: kPrimaryColor,
+                    label: "Yes",
+                    backgroundColor: Colors.transparent),
+                const SizedBox(width: 20),
+                LargeFlatButton(
+                    onPressed: () {},
+                    size: const Size(120, 60),
+                    fontColor: kPrimaryColor,
+                    label: "No",
+                    backgroundColor: Colors.transparent),
+              ],
+            )
+          ],
         ),
         // ),
       ),

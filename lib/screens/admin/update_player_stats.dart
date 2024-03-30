@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ufc_soccer/providers/game_setup_providers.dart';
+import 'package:ufc_soccer/providers/game_info_providers.dart';
+import 'package:ufc_soccer/providers/text_controllers.dart';
 import 'package:ufc_soccer/screens/admin/setup_game.dart';
 import 'package:ufc_soccer/utils/button_styles.dart';
 import 'package:ufc_soccer/utils/constants.dart';
@@ -25,7 +26,8 @@ class UpdatePlayerStats extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final size = MediaQuery.of(context).size;
-    final gameInfoState = ref.read(gameInfoProvider.notifier);
+    final gameInfoState = ref.watch(gameInfoProvider);
+    final urlCtr = ref.watch(urlCtrProvider);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -46,8 +48,7 @@ class UpdatePlayerStats extends ConsumerWidget {
               decrementTap: () => gameInfoState.goalsCurrentGameRemove(),
             ),
             TextFeildWithBorder(
-              controller: TextEditingController(
-                  text: gameInfoState.blueTeamScore.toString()),
+              controller: urlCtr,
               hintText: 'Enter Highlight YouTube URL',
             ),
             OutlinedButton(

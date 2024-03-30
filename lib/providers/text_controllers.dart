@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final urlCtrProvider =
     Provider<TextEditingController>((ref) => TextEditingController());
-final locationCtrProvider =
+final locationController =
     Provider<TextEditingController>((ref) => TextEditingController());
-final gameAccessCodeProvider =
+final managerController =
+    Provider<TextEditingController>((ref) => TextEditingController());
+final appAccessCodeCtrl =
     Provider<TextEditingController>((ref) => TextEditingController());

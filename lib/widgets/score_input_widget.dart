@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ufc_soccer/providers/game_setup_providers.dart';
+import 'package:ufc_soccer/providers/game_info_providers.dart';
 import 'package:ufc_soccer/screens/admin/update_player_stats.dart';
 
 class ScoreInputWidget extends StatelessWidget {

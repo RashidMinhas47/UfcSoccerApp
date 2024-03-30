@@ -36,11 +36,11 @@ class LargeFlatButton extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               fontSize: 16 * 1,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
               height: 1.2125 * 1 / 1,
-              color: fontColor,
+              color: kPrimaryColor,
             ),
           )),
     );
