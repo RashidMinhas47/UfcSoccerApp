@@ -14,6 +14,8 @@ class AppSettingsProvider extends ChangeNotifier {
   }
   List<String> _locations = [];
   List<String> _managers = [];
+  String? _selectedLocation;
+  String? _selectedManager;
   // List<String> _availableLocations = [];
 
   List<String> get locations => _locations;
@@ -22,12 +24,25 @@ class AppSettingsProvider extends ChangeNotifier {
   // List<String> get availableLocations => _availableLocations;
   String appAccessCode = '';
   bool isUpdation = false;
+  String? get selectedLocation => _selectedLocation;
+  String? get selectedManager => _selectedManager;
+
+  void selectLocation(value) {
+    _selectedLocation = value;
+    notifyListeners();
+  }
+
+  void selectManager(value) {
+    _selectedManager = value;
+    notifyListeners();
+  }
 
   void addLocation(String location) async {
     // if (!locations.contains(location)) {
     if (!_locations.contains(location)) {
       _locations.add(location);
       print(_locations);
+
       notifyListeners();
     }
     // } else {
@@ -52,6 +67,8 @@ class AppSettingsProvider extends ChangeNotifier {
   }
 
   Future<void> fetchSettingsData() async {
+    isUpdation = true;
+    notifyListeners();
     try {
       final settingsDocRef = _firestore.collection(APPSETTINGS).doc(SETTINGS);
 
@@ -66,6 +83,8 @@ class AppSettingsProvider extends ChangeNotifier {
     } catch (error) {
       print('Error fetching app settings: $error');
     }
+    isUpdation = false;
+    notifyListeners();
   }
 
   Future<void> updateAppSettings() async {

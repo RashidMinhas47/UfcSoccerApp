@@ -17,11 +17,14 @@ const String VALUE = 'VALUE';
 const String DATE = 'DATE';
 const String TIME = 'TIME';
 const String LOCATIONS = 'LOCATIONS';
+const String LOCATION = 'LOCATION';
+
 const String MANAGERS = 'MANAGERS';
 const String MAXPLAYER = 'MAXPLAYER';
 const String REMIXVOTING = 'REMIXVOTING';
-const String TIMEPERIOD = 'TIMEPERIOD';
+// const String TIMEPERIOD = 'TIMEPERIOD';
 const String GAMES = 'GAMES';
+const String TIMECOUNTDOWN = 'TIMECOUNTDOWN';
 
 const String APPSETTINGS = "APPSETTINGS";
 const String SETTINGS = 'SETTINGS';

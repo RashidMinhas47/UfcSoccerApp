@@ -146,7 +146,9 @@ import 'package:ufc_soccer/providers/date_time_provider.dart';
 
 class DateTimeButtons extends ConsumerWidget {
   static const String routeName = "/GameSetupScreen";
+  final String date, time;
 
+  const DateTimeButtons({super.key, required this.date, required this.time});
   @override
   Widget build(BuildContext context, ref) {
     final dateTime = ref.watch(dateTimeProvider);
@@ -158,13 +160,13 @@ class DateTimeButtons extends ConsumerWidget {
         children: [
           _buildDateTimeButton(
             icon: Icons.calendar_month,
-            label: dateTime.selectedDate?.formattedDate ?? "Select Date",
+            label: date,
             onPressed: () => _selectDate(context, ref.read(dateTimeProvider)),
           ),
           const SizedBox(height: 10),
           _buildDateTimeButton(
             icon: Icons.access_time,
-            label: dateTime.selectedTime?.format(context) ?? "Select Time",
+            label: time,
             onPressed: () => _selectTime(context, ref.read(dateTimeProvider)),
           ),
         ],

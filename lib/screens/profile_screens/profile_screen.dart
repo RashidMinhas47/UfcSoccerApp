@@ -48,6 +48,11 @@ class ProfileScreen extends ConsumerWidget {
                 Navigator.pushNamed(context, GameAdmin.screen);
               },
             ),
+            UserProfileCard(
+              label: "${userD.userName()}[${userD.jersyNumber}]",
+              subtitle: userD.nickname,
+              subtitle2: userD.positions.join(', '),
+            ),
             const PlayerStatsCard(),
             const Expanded(child: VideoListTiles())
           ],

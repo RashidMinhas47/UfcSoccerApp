@@ -44,9 +44,9 @@ class GameInfoScreen extends ConsumerWidget {
             SwitchCustomButton(
               label: "Release Video Immediately",
               onChanged: (value) {
-                setGamePro.setVoteCondition(value);
+                setGamePro.setVotingCondition(value);
               },
-              value: setGamePro.remixVote,
+              value: setGamePro.remixVoting,
             ),
             ScoreInputWidget(
               label: 'Blue Team Score',
