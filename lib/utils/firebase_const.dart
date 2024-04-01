@@ -24,8 +24,16 @@ const String MAXPLAYER = 'MAXPLAYER';
 const String REMIXVOTING = 'REMIXVOTING';
 // const String TIMEPERIOD = 'TIMEPERIOD';
 const String GAMES = 'GAMES';
+const String AllGAMES = 'ALLGAMES';
+const String ADMINNAME = 'ADMINNAME';
+
 const String TIMECOUNTDOWN = 'TIMECOUNTDOWN';
+const String GAMESTATUS = 'GAMESTATUS';
+const String VOTERS = 'VOTERS';
+const String TOTALPLAYERS = 'TOTALPLAYERS';
+const String JOINEDPLAYERS = 'JOINEDPLAYERS';
 
 const String APPSETTINGS = "APPSETTINGS";
+const String ADMINUIDS = 'ADMINUIDS';
 const String SETTINGS = 'SETTINGS';
 const String APPACCESSCODE = 'APPACCESSCODE';

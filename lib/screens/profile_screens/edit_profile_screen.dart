@@ -50,15 +50,14 @@ class EditProfileScreen extends ConsumerWidget {
                           nickName.text.isEmpty && jersyCtr.text != null ||
                           jersyCtr.text.isEmpty) {
                         editProfilePro.updateNickname(nickName.text);
-                        editProfilePro
-                            .updateJerseyNumber(int.parse(jersyCtr.text));
+                        editProfilePro.updateJerseyNumber(jersyCtr.text);
                         editProfilePro.updateUserProfile(
-                            context: context,
-                            nickname: editProfilePro.nickname,
-                            jersyNumber: int.parse(jersyCtr.text),
-                            positions: editProfilePro.getSelectedPositions(),
-                            imageUrl: '',
-                            fullName: 'fullName');
+                          context: context,
+                          nickname: editProfilePro.nickname,
+                          jersyNumber: int.parse(jersyCtr.text),
+                          positions: editProfilePro.getSelectedPositions(),
+                          imageUrl: '',
+                        );
                       }
 
                       // editProfilePro.updateJerseyNumber(newJerseyNumber)
@@ -76,3 +75,85 @@ class EditProfileScreen extends ConsumerWidget {
 const prograssWidget = Center(
   child: CircularProgressIndicator(),
 );
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:ufc_soccer/providers/user_data.dart';
+// import 'package:ufc_soccer/utils/constants.dart';
+// import 'package:ufc_soccer/widgets/custom_large_btn.dart';
+// import 'package:ufc_soccer/widgets/user_card.dart';
+// import 'package:ufc_soccer/widgets/user_profile_form.dart';
+
+// class EditProfileScreen extends ConsumerWidget {
+//   static const String screen = '/EditProfileScreen';
+
+//   const EditProfileScreen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final size = MediaQuery.of(context).size;
+//     final editProfilePro = ref.watch(userDataProvider.notifier);
+//     final jersyCtr = ref.watch(jersyController);
+//     final nickName = ref.watch(nickNameCtr);
+
+//     return Scaffold(
+//       resizeToAvoidBottomInset: false,
+//       appBar: AppBar(
+//         title: Text(
+//           "Edit Profile",
+//           style: GoogleFonts.inter(
+//             fontWeight: FontWeight.bold,
+//             fontSize: 30,
+//           ),
+//         ),
+//         centerTitle: true,
+//       ),
+//       body: ref.watch(userDataProvider.notifier).state.userUpdation
+//           ? progressWidget
+//           : SingleChildScrollView(
+//               child: Column(
+//                 children: [
+//                   UserProfileCardWithoutAction(
+//                     label:
+//                         "${ref.watch(userDataProvider.notifier).state.fullName}[${ref.watch(userDataProvider.notifier).state.jersyNumber}]",
+//                     subtitle:
+//                         ref.watch(userDataProvider.notifier).state.nickname,
+//                     subtitle2: ref
+//                         .watch(userDataProvider.notifier)
+//                         .state
+//                         .positions
+//                         .join(', '),
+//                   ),
+//                   const UserProfileForm(),
+//                   LargeFlatButton(
+//                     backgroundColor: kPrimaryColor,
+//                     size: size,
+//                     onPressed: () {
+//                       if (nickName.text.isNotEmpty &&
+//                           jersyCtr.text.isNotEmpty) {
+//                         editProfilePro.updateNickname(nickName.text);
+//                         editProfilePro
+//                             .updateJerseyNumber(int.parse(jersyCtr.text));
+//                         editProfilePro.updateUserProfile(
+//                           context: context,
+//                           nickname: editProfilePro.state.nickname,
+//                           jersyNumber: int.parse(jersyCtr.text),
+//                           positions: editProfilePro.state.positions,
+//                           imageUrl: '',
+//                         );
+//                       }
+//                     },
+//                     label: 'Update',
+//                     fontColor: kWhiteColor,
+//                   ),
+//                 ],
+//               ),
+//             ),
+//     );
+//   }
+// }
+
+// const progressWidget = Center(
+//   child: CircularProgressIndicator(),
+// );

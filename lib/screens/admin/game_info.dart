@@ -41,13 +41,14 @@ class GameInfoScreen extends ConsumerWidget {
             const GameVideoPlayer(),
             TextFeildWithBorder(
                 controller: urlCtr, hintText: 'Enter YouTube URL'),
-            SwitchCustomButton(
-              label: "Release Video Immediately",
-              onChanged: (value) {
-                setGamePro.setVotingCondition(value);
-              },
-              value: setGamePro.remixVoting,
-            ),
+            // SwitchCustomButton(
+            //   label: "Release Video Immediately",
+            //   onChanged: (value) {
+            //     setGamePro.setVotingCondition(value);
+            //   },
+            //   value: setGamePro.remixVoting,
+            // ),
+            //todo:
             ScoreInputWidget(
               label: 'Blue Team Score',
               incrementTap: () => gameInfoPro.blueTeamScoreAdd(),

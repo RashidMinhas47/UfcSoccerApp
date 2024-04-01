@@ -40,6 +40,7 @@ class _AppNavBarState extends ConsumerState<AppNavBar> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) {
+          ref.watch(userDataProvider).fetchUserData();
           setState(() {
             currentIndex = index;
           });

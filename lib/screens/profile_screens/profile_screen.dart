@@ -35,21 +35,25 @@ class ProfileScreen extends ConsumerWidget {
         ),
         body: Column(
           children: [
-            ListTile(
-              leading: const Icon(
-                Icons.admin_panel_settings_rounded,
-                size: 40,
-              ),
-              title: Text(
-                "Admin Panel",
-                style: GoogleFonts.poppins(fontSize: 20),
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, GameAdmin.screen);
-              },
-            ),
+            FutureBuilder(
+                future: userD.fetchUserData(),
+                builder: (context, child) {
+                  return ListTile(
+                    leading: const Icon(
+                      Icons.admin_panel_settings_rounded,
+                      size: 40,
+                    ),
+                    title: Text(
+                      "Admin Panel",
+                      style: GoogleFonts.poppins(fontSize: 20),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, GameAdmin.screen);
+                    },
+                  );
+                }),
             UserProfileCard(
-              label: "${userD.userName()}[${userD.jersyNumber}]",
+              label: "${userD.fullName}[${userD.jersyNumber}]",
               subtitle: userD.nickname,
               subtitle2: userD.positions.join(', '),
             ),
@@ -59,3 +63,10 @@ class ProfileScreen extends ConsumerWidget {
         ));
   }
 }
+
+
+//  UserProfileCard(
+//               label: "${userD.state.fullName}[${userD.state.jersyNumber}]",
+//               subtitle: userD.state.nickname,
+//               subtitle2: userD.state.positions.join(', '),
+//             ),

@@ -4,12 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ufc_soccer/providers/auth_providers.dart';
+import 'package:ufc_soccer/providers/home_screen_porvider.dart';
 import 'package:ufc_soccer/screens/home/pages/join_&_leave_game.dart';
 import 'package:ufc_soccer/screens/home/pages/vote_for_team.dart';
 import 'package:ufc_soccer/screens/home/pages/vote_route_2.dart';
 import 'package:ufc_soccer/screens/home/pages/vote_route_3.dart';
 import 'package:ufc_soccer/utils/constants.dart';
 import 'package:ufc_soccer/widgets/custom_large_btn.dart';
+import 'package:ufc_soccer/widgets/widget_tester.dart';
 
 class NextGameScreen extends ConsumerWidget {
   static const String screen = '/NextGameScreen';
@@ -46,14 +48,7 @@ class NextGameScreen extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              ListTile(
-                leading: CircleAvatar(
-                  child: Icon(Icons.person),
-                ),
-                title: Text('Admin who setup Game',
-                    style: GoogleFonts.poppins(
-                        fontSize: 16, fontWeight: FontWeight.w700)),
-              ),
+              AnimatedListTile(),
               Expanded(
                 child: PageView.builder(
                     scrollDirection: Axis.horizontal,
